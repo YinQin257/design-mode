@@ -1,0 +1,35 @@
+@startuml
+interface BModuleApi {
++ void testB()
+}
+class Facade {
++ void test()
+}
+class BModuleApiImpl {
++ void testB()
+}
+interface AModuleApi {
++ void testA()
+}
+class AModuleApiImpl {
++ void testA()
+}
+class Client {
++ {static} void main(String[])
+}
+interface CModuleApi {
++ void testC()
+}
+class CModuleApiImpl {
++ void testC()
+}
+
+BModuleApi <|.. BModuleApiImpl
+AModuleApi <|.. AModuleApiImpl
+CModuleApi <|.. CModuleApiImpl
+Facade --> AModuleApi
+Facade --> BModuleApi
+Facade --> CModuleApi
+Client --> Facade
+note right of Facade : 外观模式的核心，外观类
+@enduml

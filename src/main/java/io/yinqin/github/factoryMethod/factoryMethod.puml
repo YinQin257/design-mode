@@ -1,0 +1,29 @@
+@startuml
+class ExportTxtFile {
++ boolean export(String)
+}
+class Client {
++ {static} void main(String[])
+}
+abstract class ExportOperate {
++ boolean export(String)
+}
+interface ExportFileApi {
++ boolean export(String)
+}
+class ExportTxtFileOperate {
+}
+class ExportDBFileOperate {
+}
+class ExportDBFile {
++ boolean export(String)
+}
+
+Client ..> ExportOperate
+ExportFileApi <|.. ExportTxtFile
+ExportOperate <|-- ExportTxtFileOperate
+ExportOperate <|-- ExportDBFileOperate
+ExportFileApi <|.. ExportDBFile
+ExportDBFileOperate ..> ExportDBFile
+ExportTxtFileOperate ..> ExportTxtFile
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+class Schema2 {
++ CPUApi createCPUApi()
++ MainboardApi createMainboardApi()
+}
+interface CPUApi {
++ String brand()
++ int pins()
+}
+interface AbstractFactory {
++ CPUApi createCPUApi()
++ MainboardApi createMainboardApi()
+}
+interface MainboardApi {
++ String brand()
++ int cpuHoles()
+}
+class ComputerEngineer {
++ void makeComputer(AbstractFactory)
+- void prepareHardware(AbstractFactory)
+}
+class Schema1 {
++ CPUApi createCPUApi()
++ MainboardApi createMainboardApi()
+}
+class GAMainboard {
++ String brand()
++ int cpuHoles()
+}
+class IntelCPU {
++ String brand()
++ int pins()
+}
+class MSIMainboard {
++ String brand()
++ int cpuHoles()
+}
+class AMDCPU {
++ String brand()
++ int pins()
+}
+class Client {
++ {static} void main(String[])
+}
+
+ComputerEngineer ..> AbstractFactory
+ComputerEngineer ..> CPUApi
+ComputerEngineer ..> MainboardApi
+
+
+AbstractFactory <|.. Schema2
+AbstractFactory <|.. Schema1
+MainboardApi <|.. GAMainboard
+MainboardApi <|.. MSIMainboard
+CPUApi <|.. IntelCPU
+CPUApi <|.. AMDCPU
+
+Client ..> Schema1
+Client ..> Schema2
+Client ..> ComputerEngineer
+Schema1 ..> IntelCPU
+Schema1 ..> GAMainboard
+Schema2 ..> AMDCPU
+Schema2 ..> MSIMainboard
+@enduml

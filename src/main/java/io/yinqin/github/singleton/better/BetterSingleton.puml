@@ -1,0 +1,15 @@
+@startuml
+-class BetterSingleton {
++ {static} BetterSingleton getInstance()
+}
+note top: <color:red></color>私有化类的构造方法
+class BetterSingleton$SingletonHolder {
+- {static} BetterSingleton instance
+}
+note right of BetterSingleton::getInstance
+对外提供的全局唯一访问点
+end note
+
+BetterSingleton +.. BetterSingleton$SingletonHolder
+
+@enduml

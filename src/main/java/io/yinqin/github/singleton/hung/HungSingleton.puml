@@ -1,0 +1,13 @@
+@startuml
+-class HungSingleton {
+- {static} HungSingleton instance
++ {static} HungSingleton getInstance()
+}
+note top: <color:red></color>私有化类的构造方法
+note right of HungSingleton::instance
+存储实例的静态常量，类加载时就初始化实例
+end note
+note right of HungSingleton::getInstance
+对外提供的全局唯一访问点
+end note
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+-class LazySingleton {
+- {static} LazySingleton instance
++ {static} LazySingleton getInstance()
+}
+note top: <color:red></color>私有化类的构造方法
+note right of LazySingleton::instance
+存储实例的静态变量，没有初始化值
+end note
+note right of LazySingleton::getInstance
+对外提供的全局唯一访问点，第一次调用时初始化实例，后续直接返回
+end note
+@enduml

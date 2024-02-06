@@ -1,0 +1,22 @@
+@startuml
+class Adaptee {
++ void specificRequest()
+}
+interface Target {
++ void request()
+}
+class Adapter {
+- Adaptee adaptee
++ void request()
+}
+class Client {
++ {static} void main(String[])
+}
+Client -[dashed]-> Target
+Target <|.. Adapter
+Adapter x-> Adaptee
+note left of Adapter : 适配器模式的核心，它对Adaptee提供的方法做了适配处理，\n \
+将specificRequest方法转换为request，客户端就可以直接使用
+note left of Client : 客户端需要调用Target的request方法，\n \
+但是目前Adaptee类的specificRequest方法提供了需要的功能实现
+@enduml

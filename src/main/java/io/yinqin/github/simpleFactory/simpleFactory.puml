@@ -1,0 +1,20 @@
+@startuml
+class ApiImplB  implements Api{
++ void operation(String)
+}
+class Client {
++ {static} void main(String[])
+}
+class ApiFactory {
++ {static} Api createApi(int)
+}
+class ApiImplA implements Api {
++ void operation(String)
+}
+interface Api {
++ void operation(String)
+}
+
+Client --> ApiFactory
+ApiFactory --> Api
+@enduml
